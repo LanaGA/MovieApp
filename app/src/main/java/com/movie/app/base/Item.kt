@@ -1,4 +1,4 @@
-package com.example.kinoteatr.base
+package com.movie.app.base
 
 interface Item {
 }
