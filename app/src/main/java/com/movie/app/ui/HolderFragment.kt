@@ -1,11 +1,11 @@
-package com.example.kinoteatr.ui
+package com.movie.app.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.kinoteatr.R
-import com.example.kinoteatr.di.MOVIES_QUALIFIER
-import com.example.kinoteatr.ui.mainscreen.MoviesScreen
+import com.movie.app.ui.mainscreen.MoviesScreen
+import com.movie.app.R
+import com.movie.app.di.MOVIES_QUALIFIER
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Navigator

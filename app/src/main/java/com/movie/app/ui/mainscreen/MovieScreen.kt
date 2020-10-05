@@ -1,4 +1,4 @@
-package com.example.kinoteatr.ui.mainscreen
+package com.movie.app.ui.mainscreen
 
 import androidx.fragment.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen

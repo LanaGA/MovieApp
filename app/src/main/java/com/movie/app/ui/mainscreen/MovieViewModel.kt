@@ -1,10 +1,10 @@
-package com.example.kinoteatr.ui.mainscreen
+package com.movie.app.ui.mainscreen
+
 
 import androidx.lifecycle.viewModelScope
-import com.example.kinoteatr.base.BaseViewModel
-import com.example.kinoteatr.base.Event
-import com.example.kinoteatr.data.MovieRepository
-import com.example.kinoteatr.ui.mainscreen.model.MovieModel
+import com.movie.app.base.BaseViewModel
+import com.movie.app.base.Event
+import com.movie.app.data.MovieRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 

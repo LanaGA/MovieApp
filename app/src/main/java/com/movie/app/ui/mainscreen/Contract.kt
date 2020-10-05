@@ -1,7 +1,7 @@
-package com.example.kinoteatr.ui.mainscreen
+package com.movie.app.ui.mainscreen
 
-import com.example.kinoteatr.base.Event
-import com.example.kinoteatr.ui.mainscreen.model.MovieModel
+import com.movie.app.base.Event
+import com.movie.app.ui.mainscreen.model.MovieModel
 
 data class ViewState(
     val status: STATUS,

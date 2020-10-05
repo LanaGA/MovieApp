@@ -1,18 +1,13 @@
-package com.example.kinoteatr.ui.mainscreen
+package com.movie.app.ui.mainscreen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kinoteatr.R
-import com.example.kinoteatr.base.Item
-import com.example.kinoteatr.base.setAdapterAndCleanupOnDetachFromWindow
-import com.example.kinoteatr.base.setData
-import com.example.kinoteatr.ui.mainscreen.model.MovieModel
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.movie.app.R
+import com.movie.app.base.Item
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
