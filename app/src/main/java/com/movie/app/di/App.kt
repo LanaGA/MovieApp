@@ -11,7 +11,8 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 appModule,
-                navModule
+                navModule,
+                viewModelModule
             )
         }
     }

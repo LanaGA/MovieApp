@@ -1,13 +1,17 @@
 package com.movie.app.di
 
 import android.util.Log
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.movie.app.base.BASE_URL
 import com.movie.app.data.MovieRepository
 import com.movie.app.data.MovieRepositoryImpl
 import com.movie.app.data.remote.MovieApi
 import com.movie.app.data.remote.model.MovieRemoteSource
+import com.movie.app.ui.mainscreen.MovieViewModel
+import com.movie.app.ui.mainscreen.movieAdapterDelegate
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -67,5 +71,17 @@ val navModule = module {
 
     single<Router>(named(MOVIES_QUALIFIER)) {
         get<Cicerone<Router>>(named(MOVIES_QUALIFIER)).router
+    }
+}
+
+val viewModelModule = module {
+    viewModel<MovieViewModel> {
+        MovieViewModel(get())
+    }
+
+    factory {
+        ListDelegationAdapter(
+            movieAdapterDelegate()
+        )
     }
 }
