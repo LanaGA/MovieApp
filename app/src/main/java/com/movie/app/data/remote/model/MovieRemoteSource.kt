@@ -1,6 +1,6 @@
 package com.movie.app.data.remote.model
 
-import com.movie.app.data.mapToUiModel
+import com.movie.app.ui.mainscreen.model.mapToUiModel
 import com.movie.app.data.remote.MovieApi
 import com.movie.app.ui.mainscreen.model.MovieModel
 

@@ -7,27 +7,28 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.movie.app.R
-import com.movie.app.base.Item
+import com.movie.app.base.setAdapterAndCleanupOnDetachFromWindow
+import com.movie.app.base.setData
+import com.movie.app.ui.infoscreen.openMovieAdapterDelegate
 import kotlinx.android.synthetic.main.fragment_main.*
-import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MovieViewModel by viewModel()
-    private val adapter: ListDelegationAdapter<List<Item>> = get()
-
+    private val adapter = ListDelegationAdapter(openMovieAdapterDelegate {
+        viewModel.processUiEvent(UiEvent.OpenMovieInfo(it))
+    })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initView()
         viewModel.viewState.observe(viewLifecycleOwner, Observer(::render))
-        viewModel.processUiEvent(UiEvent.LoadMovies)
+        initView()
     }
 
     private fun initView() {
         rvMoviesList.layoutManager = GridLayoutManager(requireContext(), 2)
-        rvMoviesList.adapter = adapter
+        rvMoviesList.setAdapterAndCleanupOnDetachFromWindow(adapter)
+        viewModel.processUiEvent(UiEvent.LoadMovies)
     }
 
     private fun render(viewState: ViewState) {
@@ -35,8 +36,7 @@ class MovieFragment : Fragment(R.layout.fragment_main) {
             STATUS.LOAD -> {
             }
             STATUS.CONTENT -> {
-                adapter.items = viewState.movieList
-                adapter.notifyDataSetChanged()
+                adapter.setData(viewState.movieList)
             }
             STATUS.ERROR -> {
             }

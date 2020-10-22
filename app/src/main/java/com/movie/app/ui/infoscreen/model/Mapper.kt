@@ -1,17 +1,15 @@
-package com.movie.app.data
+package com.movie.app.ui.infoscreen.model
 
 import com.movie.app.data.remote.model.GenreRemoteModel
 import com.movie.app.data.remote.model.MovieRemoteModel
 import com.movie.app.ui.mainscreen.model.GenreModel
-import com.movie.app.ui.mainscreen.model.MovieModel
 
-
-fun MovieRemoteModel.mapToUiModel(): MovieModel {
-    return MovieModel(
+fun MovieRemoteModel.mapToUiModel(): InfoMovieModel {
+    return InfoMovieModel(
         title = title,
         original_title = original_title,
-        genres = genres.map { it.mapToUiModel() },
         poster_path = poster_path,
+        genres = genres.map { it.mapToUiModel() },
         overview = overview,
         release_date = release_date,
         vote_average = vote_average

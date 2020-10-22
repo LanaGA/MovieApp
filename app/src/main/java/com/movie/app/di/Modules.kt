@@ -76,12 +76,6 @@ val navModule = module {
 
 val viewModelModule = module {
     viewModel<MovieViewModel> {
-        MovieViewModel(get())
-    }
-
-    factory {
-        ListDelegationAdapter(
-            movieAdapterDelegate()
-        )
+        MovieViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
 }
