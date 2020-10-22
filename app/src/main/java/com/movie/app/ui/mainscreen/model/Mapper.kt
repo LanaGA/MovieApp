@@ -2,7 +2,6 @@ package com.movie.app.ui.mainscreen.model
 
 import com.movie.app.data.remote.model.GenreRemoteModel
 import com.movie.app.data.remote.model.MovieRemoteModel
-import com.movie.app.ui.infoscreen.model.mapToUiModel
 
 
 fun MovieRemoteModel.mapToUiModel(): MovieModel {
@@ -15,4 +14,8 @@ fun MovieRemoteModel.mapToUiModel(): MovieModel {
         release_date = release_date,
         vote_average = vote_average
     )
+}
+
+fun GenreRemoteModel.mapToUiModel(): GenreModel{
+    return GenreModel(name = name)
 }

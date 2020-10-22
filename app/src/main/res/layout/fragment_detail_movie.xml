@@ -8,48 +8,82 @@
 
     <ImageView
         android:id="@+id/posterImageView"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/posterImageView"
-        app:layout_constraintTop_toTopOf="@+id/posterImageView"
-        tools:text="Whiplash" />
+    <RadioGroup
+        android:id="@+id/toggle"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/pink_out_line"
+        android:checkedButton="@+id/overview"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/posterImageView">
 
-    <TextView
-        android:id="@+id/yearTextView"
-        app:layout_constraintEnd_toEndOf="@+id/titleTextView"
-        app:layout_constraintStart_toStartOf="@+id/titleTextView"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-        tools:text="2014"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+        <RadioButton
+            android:id="@+id/overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Overview" />
 
-    <TextView
-        android:id="@+id/genreTextView"
-        app:layout_constraintEnd_toEndOf="@+id/yearTextView"
-        app:layout_constraintStart_toStartOf="@+id/yearTextView"
-        app:layout_constraintTop_toBottomOf="@+id/yearTextView"
-        tools:text="Drama, Music"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="32dp" />
+        <RadioButton
+            android:id="@+id/details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="More details" />
+    </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toggle"
+            tools:text="Whiplash" />
+
+        <TextView
+            android:id="@+id/yearTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintEnd_toEndOf="@+id/titleTextView"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            tools:text="2014" />
+
+        <TextView
+            android:id="@+id/genreTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingBottom="32dp"
+            app:layout_constraintEnd_toEndOf="@+id/yearTextView"
+            app:layout_constraintStart_toStartOf="@+id/yearTextView"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+            tools:text="Drama, Music" />
 
     <TextView
         android:id="@+id/scoreTextView"
@@ -59,20 +93,28 @@
         app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
         app:layout_constraintStart_toStartOf="@+id/genreTextView"
         app:layout_constraintTop_toBottomOf="@+id/genreTextView"
-        app:layout_constraintVertical_bias="0.466"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="8.5" />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="@+id/titleTextView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/yearTextView"
+            tools:text="Movie description" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        app:layout_constraintEnd_toEndOf="@+id/titleTextView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/posterImageView"
-        app:layout_constraintTop_toBottomOf="@+id/posterImageView"
-        tools:text="Movie description" />
-
-
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play" />
 </androidx.constraintlayout.widget.ConstraintLayout>
