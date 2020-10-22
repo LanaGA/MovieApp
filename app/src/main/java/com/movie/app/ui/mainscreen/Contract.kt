@@ -5,7 +5,8 @@ import com.movie.app.ui.mainscreen.model.MovieModel
 
 data class ViewState(
     val status: STATUS,
-    val movieList: List<MovieModel>
+    val movieList: List<MovieModel>,
+    val movie: MovieModel?
 )
 
 sealed class UiEvent : Event {

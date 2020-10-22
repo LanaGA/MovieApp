@@ -14,7 +14,8 @@ class MovieViewModel(private val moviesRepository: MovieRepository, private val 
 
     override fun initialViewState(): ViewState = ViewState(
         status = STATUS.LOAD,
-        movieList = listOf()
+        movieList = listOf(),
+        movie = null
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -28,16 +29,16 @@ class MovieViewModel(private val moviesRepository: MovieRepository, private val 
                         processDataEvent(DataEvent.OnError(e))
                     }
                 }
-                return ViewState(status = STATUS.LOAD, movieList = listOf())
+                return ViewState(status = STATUS.LOAD, movieList = listOf(), movie = null)
             }
             is UiEvent.OpenMovieInfo -> {
                 router.navigateTo(InfoScreen(event.movieModel))
             }
             is DataEvent.OnSuccessAllMovieRequest -> {
-                return ViewState(STATUS.CONTENT, event.movieList)
+                return ViewState(STATUS.CONTENT, event.movieList, null)
             }
             is DataEvent.OnError -> {
-                return ViewState(status = STATUS.ERROR, movieList = listOf())
+                return ViewState(status = STATUS.ERROR, movieList = listOf(), movie = null)
             }
         }
         return null
