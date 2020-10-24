@@ -32,8 +32,10 @@ class InfoFragment(private val movie: MovieModel?): Fragment(R.layout.fragment_d
     }
 
     private fun attachModel(){
-        Glide.with(detailModel).load(movie?.poster_path).into(posterImageView)
-        titleTextView.text = movie?.title
+        Glide.with(requireContext())
+            .load(movie?.poster_path)
+            .into(posterImageView)
+        titleToolbar.title = movie?.title
         yearTextView.text = movie?.release_date
         genreTextView.text = movie?.genres.toString()
         scoreTextView.text = movie?.vote_average.toString()

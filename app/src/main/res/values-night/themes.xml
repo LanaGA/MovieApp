@@ -1,16 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+    <style name="AppTheme" parent="BaseTheme">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">?attr/colorPrimary</item>
+        <item name="colorOnPrimary">@color/design_default_color_on_primary</item>
+
+        <!--  region Backgrounds  -->
+        <item name="colorSurfaceMain">@color/dark_700</item>
+        <item name="colorSurfaceAccent">@color/dark_600</item>
+        <item name="colorSurfaceNative">@color/dark_700</item>
+        <item name="colorSurfaceVariant">@color/dark_600</item>
+
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor">?attr/colorBackground</item>
     </style>
+
 </resources>
