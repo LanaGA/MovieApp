@@ -8,10 +8,12 @@ import com.movie.app.ui.mainscreen.DataEvent
 import com.movie.app.ui.mainscreen.STATUS
 import com.movie.app.ui.mainscreen.UiEvent
 import com.movie.app.ui.mainscreen.ViewState
+import com.movie.app.ui.pleerscreen.PlayerScreen
 import kotlinx.coroutines.launch
+import ru.terrakok.cicerone.Router
 import java.io.IOException
 
-class InfoViewModel (private val moviesRepository: MovieRepository) : BaseViewModel<ViewState>() {
+class InfoViewModel(private val moviesRepository: MovieRepository, private val router: Router) : BaseViewModel<ViewState>() {
     override fun initialViewState(): ViewState = ViewState(
         status = STATUS.LOAD,
         movieList = listOf(),
@@ -20,14 +22,8 @@ class InfoViewModel (private val moviesRepository: MovieRepository) : BaseViewMo
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
-            is UiEvent.OpenMovieInfo -> {
-                viewModelScope.launch {
-                    try {
-                        processDataEvent(DataEvent.OnSuccessMovieRequest(event.movieModel))
-                    } catch (e: IOException) {
-                        processDataEvent(DataEvent.OnError(e))
-                    }
-                }
+            is UiEvent.OpenMoviePlayer -> {
+                router.navigateTo(PlayerScreen(event.movieModel))
             }
             is DataEvent.OnSuccessMovieRequest -> {
                 return ViewState(STATUS.CONTENT, listOf(), event.movie)

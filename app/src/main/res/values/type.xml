@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.Weather.Body1" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextAppearance.MovieApp.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="fontFamily">sans-serif</item>
@@ -10,7 +10,7 @@
         <item name="lineHeight">24sp</item>
     </style>
 
-    <style name="TextAppearance.Weather.Body2" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="TextAppearance.MovieApp.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="fontFamily">sans-serif</item>

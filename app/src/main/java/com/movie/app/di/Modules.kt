@@ -80,6 +80,6 @@ val viewModelModule = module {
         MovieViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
     viewModel<InfoViewModel> {
-        InfoViewModel(get())
+        InfoViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
 }

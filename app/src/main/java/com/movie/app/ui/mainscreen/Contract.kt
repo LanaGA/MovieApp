@@ -12,6 +12,7 @@ data class ViewState(
 sealed class UiEvent : Event {
     object LoadMovies : UiEvent()
     data class OpenMovieInfo(val movieModel: MovieModel) : UiEvent()
+    data class OpenMoviePlayer(val movieModel: MovieModel) : UiEvent()
 }
 
 sealed class DataEvent : Event {

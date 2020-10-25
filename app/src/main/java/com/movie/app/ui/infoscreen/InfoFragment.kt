@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.movie.app.R
 import com.movie.app.di.MOVIES_QUALIFIER
+import com.movie.app.ui.mainscreen.UiEvent
 import com.movie.app.ui.mainscreen.model.MovieModel
 import kotlinx.android.synthetic.main.fragment_detail_movie.*
 import org.koin.android.ext.android.inject
@@ -15,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Router
 
-class InfoFragment(private val movie: MovieModel?): Fragment(R.layout.fragment_detail_movie) {
+class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
     private val router: Router by inject(named(MOVIES_QUALIFIER))
 
@@ -29,9 +31,20 @@ class InfoFragment(private val movie: MovieModel?): Fragment(R.layout.fragment_d
         details.setOnClickListener {
             displayDetails()
         }
+        playButton.setOnClickListener {
+            if (movie != null) {
+                viewModel.processUiEvent(UiEvent.OpenMoviePlayer(movie))
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Invalid movie: no link for player",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
-    private fun attachModel(){
+    private fun attachModel() {
         Glide.with(requireContext())
             .load(movie?.poster_path)
             .into(posterImageView)
@@ -40,15 +53,17 @@ class InfoFragment(private val movie: MovieModel?): Fragment(R.layout.fragment_d
         genreTextView.text = movie?.genres.toString()
         scoreTextView.text = movie?.vote_average.toString()
         descriptionTextView.text = movie?.overview
-        scoreTextView.text = movie?.vote_average.toString()
 
     }
-    private fun displayOverview(){
+
+    private fun displayOverview() {
+        yearTextView.visibility = GONE
         genreTextView.visibility = GONE
         scoreTextView.visibility = GONE
     }
 
-    private fun displayDetails(){
+    private fun displayDetails() {
+        yearTextView.visibility = VISIBLE
         genreTextView.visibility = VISIBLE
         scoreTextView.visibility = VISIBLE
     }
