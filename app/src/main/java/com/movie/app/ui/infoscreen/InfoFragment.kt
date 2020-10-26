@@ -8,6 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.movie.app.R
+import com.movie.app.base.formatGenres
+import com.movie.app.base.formatVoteCount
+import com.movie.app.base.formatYear
+import com.movie.app.base.round
 import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.ui.mainscreen.UiEvent
 import com.movie.app.ui.mainscreen.model.MovieModel
@@ -24,12 +28,12 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         attachModel()
-        displayOverview()
+        display(GONE)
         overview.setOnClickListener {
-            displayOverview()
+            display(GONE)
         }
         details.setOnClickListener {
-            displayDetails()
+            display(VISIBLE)
         }
         playButton.setOnClickListener {
             if (movie != null) {
@@ -49,22 +53,42 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
             .load(movie?.poster_path)
             .into(posterImageView)
         titleToolbar.title = movie?.title
-        yearTextView.text = movie?.release_date
-        genreTextView.text = movie?.genres.toString()
-        scoreTextView.text = movie?.vote_average.toString()
         descriptionTextView.text = movie?.overview
 
+        originTitleTextView.text = movie?.original_title
+        namedOriginTitle.text = "Origin Title: "
+
+        originLanguageTextView.text = movie?.original_language
+        namedOriginLanguage.text = "Origin Language: "
+
+        yearTextView.text = movie?.release_date?.let { formatYear(it) }
+        namedYearTextView.text = "Release Year: "
+
+        genreTextView.text = movie?.genres?.let { formatGenres(it) }
+        namedGenreTextView.text = "Genres: "
+
+        scoreTextView.text = movie?.vote_average?.round(1).toString()
+        voteTotalTextView.text = movie?.vote_count?.let { formatVoteCount(it) }
+        namedScoreTextView.text = "Score: "
+
     }
 
-    private fun displayOverview() {
-        yearTextView.visibility = GONE
-        genreTextView.visibility = GONE
-        scoreTextView.visibility = GONE
+    private fun display(value: Int) {
+        originTitleTextView.visibility = value
+        namedOriginTitle.visibility = value
+
+        originLanguageTextView.visibility = value
+        namedOriginLanguage.visibility = value
+
+        yearTextView.visibility = value
+        namedYearTextView.visibility = value
+
+        genreTextView.visibility = value
+        namedGenreTextView.visibility = value
+
+        scoreTextView.visibility = value
+        namedScoreTextView.visibility = value
+        voteTotalTextView.visibility = value
     }
 
-    private fun displayDetails() {
-        yearTextView.visibility = VISIBLE
-        genreTextView.visibility = VISIBLE
-        scoreTextView.visibility = VISIBLE
-    }
 }

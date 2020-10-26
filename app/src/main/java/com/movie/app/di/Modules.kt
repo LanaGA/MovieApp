@@ -9,7 +9,6 @@ import com.movie.app.data.remote.MovieApi
 import com.movie.app.data.remote.model.MovieRemoteSource
 import com.movie.app.ui.infoscreen.InfoViewModel
 import com.movie.app.ui.mainscreen.MovieViewModel
-import com.movie.app.ui.mainscreen.movieAdapterDelegate
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel

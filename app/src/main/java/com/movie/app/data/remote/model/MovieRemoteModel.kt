@@ -1,6 +1,7 @@
 package com.movie.app.data.remote.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class MovieRemoteModel(
     @SerializedName("adult")
@@ -16,7 +17,7 @@ data class MovieRemoteModel(
     @SerializedName("overview")
     val overview: String,
     @SerializedName("release_date")
-    val release_date: String,
+    val release_date: Date,
     @SerializedName("poster_path")
     val poster_path: String,
     @SerializedName("popularity")

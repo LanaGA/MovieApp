@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MovieApp</string>
+    <string name="originTitle">Origin Title: </string>
+    <string name="originLanguage">Origin Language: </string>
 </resources>
