@@ -14,6 +14,7 @@
         <item name="colorSurfaceVariant">@color/dark_600</item>
 
         <item name="elevationOverlayEnabled">false</item>
+        <item name="colorBackground">@color/background_light_night</item>
 
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:statusBarColor">?attr/colorBackground</item>

@@ -7,6 +7,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
 import com.movie.app.R
 import com.movie.app.base.formatGenres
 import com.movie.app.base.formatVoteCount
@@ -49,27 +50,25 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
     }
 
     private fun attachModel() {
+        //TODO: добавить обработку ошибок(отсутствие интернета)
+        movie!!
         Glide.with(requireContext())
-            .load(movie?.poster_path)
+            .load(movie.poster_path)
             .into(posterImageView)
-        titleToolbar.title = movie?.title
-        descriptionTextView.text = movie?.overview
+        titleToolbar.title = movie.title
+        descriptionTextView.text = movie.overview
 
-        originTitleTextView.text = movie?.original_title
-        namedOriginTitle.text = "Origin Title: "
-
-        originLanguageTextView.text = movie?.original_language
-        namedOriginLanguage.text = "Origin Language: "
-
-        yearTextView.text = movie?.release_date?.let { formatYear(it) }
-        namedYearTextView.text = "Release Year: "
-
-        genreTextView.text = movie?.genres?.let { formatGenres(it) }
-        namedGenreTextView.text = "Genres: "
-
-        scoreTextView.text = movie?.vote_average?.round(1).toString()
-        voteTotalTextView.text = movie?.vote_count?.let { formatVoteCount(it) }
-        namedScoreTextView.text = "Score: "
+        originTitleTextView.text = movie.original_title
+        originLanguageTextView.text = movie.original_language
+        yearTextView.text = movie.release_date.let { formatYear(it) }
+        formatGenres(movie.genres).forEach {
+            Chip(genreChip.context).apply {
+            text =  it
+            genreChip.addView(this)
+            isClickable = false
+        }}
+        scoreTextView.text = movie.vote_average.round(1).toString()
+        voteTotalTextView.text = movie.vote_count.let { formatVoteCount(it) }
 
     }
 
@@ -83,7 +82,7 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
         yearTextView.visibility = value
         namedYearTextView.visibility = value
 
-        genreTextView.visibility = value
+        genreChip.visibility = value
         namedGenreTextView.visibility = value
 
         scoreTextView.visibility = value
