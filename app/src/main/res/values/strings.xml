@@ -2,4 +2,7 @@
     <string name="app_name">MovieApp</string>
     <string name="originTitle">Origin Title: </string>
     <string name="originLanguage">Origin Language: </string>
+    <string name="releaseYear">"Release Year: "</string>
+    <string name="genres">"Genres: "</string>
+    <string name="score">"Score: "</string>
 </resources>

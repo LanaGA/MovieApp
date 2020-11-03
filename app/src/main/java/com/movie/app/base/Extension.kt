@@ -6,6 +6,7 @@ import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
 import com.movie.app.ui.mainscreen.model.GenreModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun <T> AbsDelegationAdapter<T>.setData(data: T) {
     items = data
@@ -36,13 +37,10 @@ fun formatVoteCount(vote: Int): String {
     return "(Total vote: $vote)"
 }
 
-fun formatGenres(genres: List<GenreModel>): String {
-    val sb = StringBuilder()
-    genres.forEachIndexed { index, genreModel ->
-        sb.append(genreModel.name)
-        if (index < genres.size - 1) {
-            sb.append("\n")
-        }
+fun formatGenres(genres: List<GenreModel>): List<String> {
+    val string = ArrayList<String>()
+    genres.forEachIndexed { _, genreModel ->
+        string.add(genreModel.name)
     }
-    return sb.toString()
+    return string
 }

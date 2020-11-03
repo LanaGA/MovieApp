@@ -3,15 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'kotlinx-serialization'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.example.kinoteatr"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -53,9 +53,15 @@ dependencies {
     def coroutines = "1.3.9"
     def koin_version = '2.1.6'
     def nav_version = "2.3.0"
+    def exoplayer_version = '2.9.5'
 
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
