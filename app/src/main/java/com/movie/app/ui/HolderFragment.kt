@@ -3,9 +3,9 @@ package com.movie.app.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.movie.app.ui.mainscreen.MoviesScreen
 import com.movie.app.R
 import com.movie.app.di.MOVIES_QUALIFIER
+import com.movie.app.ui.mainscreen.MovieScreen
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Navigator
@@ -25,7 +25,7 @@ class HolderFragment : Fragment(R.layout.activity_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        router.navigateTo(MoviesScreen())
+        router.navigateTo(MovieScreen())
     }
 
     override fun onResume() {

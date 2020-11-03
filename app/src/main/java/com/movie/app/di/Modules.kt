@@ -7,8 +7,8 @@ import com.movie.app.data.MovieRepository
 import com.movie.app.data.MovieRepositoryImpl
 import com.movie.app.data.remote.MovieApi
 import com.movie.app.data.remote.model.MovieRemoteSource
+import com.movie.app.ui.infoscreen.InfoViewModel
 import com.movie.app.ui.mainscreen.MovieViewModel
-import com.movie.app.ui.mainscreen.movieAdapterDelegate
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -76,12 +76,9 @@ val navModule = module {
 
 val viewModelModule = module {
     viewModel<MovieViewModel> {
-        MovieViewModel(get())
+        MovieViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
-
-    factory {
-        ListDelegationAdapter(
-            movieAdapterDelegate()
-        )
+    viewModel<InfoViewModel> {
+        InfoViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
 }
