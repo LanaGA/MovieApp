@@ -38,4 +38,5 @@
     <color name="grey_200">#F7F7F7</color>
 
     <color name="transparent">#00000000</color>
+    <color name="shadow20">#20FFFFFF</color>
 </resources>
