@@ -31,9 +31,8 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val arguments = intent.extras
-        //arguments!!
-        //url = arguments.getString(URL_KEY)
-        url = "http://techslides.com/demos/sample-videos/small.mp4"
+        arguments!!
+        url = arguments.getString(URL_KEY)
         setContentView(R.layout.fragment_player)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
