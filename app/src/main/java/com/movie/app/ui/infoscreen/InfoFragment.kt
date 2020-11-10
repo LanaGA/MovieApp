@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.tabs.TabLayout
 import com.movie.app.R
 import com.movie.app.base.formatGenres
 import com.movie.app.base.formatVoteCount
@@ -22,20 +23,32 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Router
 
+
 class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
     private val router: Router by inject(named(MOVIES_QUALIFIER))
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         attachModel()
-        display(GONE)
-        overview.setOnClickListener {
-            display(GONE)
-        }
-        details.setOnClickListener {
-            display(VISIBLE)
-        }
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tabLayout.selectedTabPosition){
+                    0 -> display(VISIBLE)
+                    1 -> display(GONE)
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
+
         playButton.setOnClickListener {
             if (movie != null) {
                 viewModel.processUiEvent(UiEvent.OpenMoviePlayer(movie))
@@ -47,6 +60,7 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
                 ).show()
             }
         }
+
     }
 
     private fun attachModel() {
@@ -63,10 +77,11 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
         yearTextView.text = movie.release_date.let { formatYear(it) }
         formatGenres(movie.genres).forEach {
             Chip(genreChip.context).apply {
-            text =  it
-            genreChip.addView(this)
-            isClickable = false
-        }}
+                text = it
+                genreChip.addView(this)
+                isClickable = false
+            }
+        }
         scoreTextView.text = movie.vote_average.round(1).toString()
         voteTotalTextView.text = movie.vote_count.let { formatVoteCount(it) }
 
@@ -89,5 +104,6 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
         namedScoreTextView.visibility = value
         voteTotalTextView.visibility = value
     }
+
 
 }

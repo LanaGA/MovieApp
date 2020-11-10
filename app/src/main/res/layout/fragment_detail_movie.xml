@@ -44,49 +44,32 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="727dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RadioGroup
-                android:id="@+id/toggle"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="@color/colorPrimary"
-                android:checkedButton="@+id/overview"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <RadioButton
-                    android:id="@+id/overview"
-                    android:layout_width="0dp"
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Overview" />
+                    android:text="Description" />
 
-                <RadioButton
-                    android:id="@+id/details"
-                    android:layout_width="0dp"
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/white_100"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="More details" />
-            </RadioGroup>
+                    android:text="More Details" />
+
+            </com.google.android.material.tabs.TabLayout>
 
             <TextView
                 android:id="@+id/descriptionTextView"
@@ -105,7 +88,7 @@
                 android:padding="4dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toggle"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout"
                 tools:text="Origin Title: " />
 
             <TextView
@@ -115,7 +98,7 @@
                 android:padding="4dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toEndOf="@+id/namedOriginTitle"
-                app:layout_constraintTop_toBottomOf="@+id/toggle"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout"
                 tools:text="Origin Title" />
 
             <TextView
@@ -208,7 +191,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/genreChip"
                 tools:text="()" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -221,4 +203,6 @@
         app:layout_anchor="@id/nestedScroll"
         app:layout_anchorGravity="bottom|right|end"
         app:srcCompat="@android:drawable/ic_media_play" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

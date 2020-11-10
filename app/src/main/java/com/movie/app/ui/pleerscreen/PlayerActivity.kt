@@ -107,6 +107,7 @@ class PlayerActivity : AppCompatActivity() {
             override fun onSeekProcessed() {
 
             }
+
         })
 
         button_fullscreen.setOnClickListener {
