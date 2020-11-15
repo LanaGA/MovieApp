@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.movie.app.R
 import com.movie.app.base.formatGenres
 import com.movie.app.base.formatVoteCount
@@ -32,12 +33,11 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         attachModel()
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when(tabLayout.selectedTabPosition){
-                    0 -> display(VISIBLE)
-                    1 -> display(GONE)
+                when (tabLayout.selectedTabPosition) {
+                    0 -> display(GONE)
+                    1 -> display(VISIBLE)
                 }
             }
 
@@ -46,9 +46,10 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
-
         })
 
+//        tabLayout.selectTab(tabLayout.getTabAt(0))
+        display(GONE)
         playButton.setOnClickListener {
             if (movie != null) {
                 viewModel.processUiEvent(UiEvent.OpenMoviePlayer(movie))
@@ -64,7 +65,6 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
     }
 
     private fun attachModel() {
-        //TODO: добавить обработку ошибок(отсутствие интернета)
         movie!!
         Glide.with(requireContext())
             .load(movie.poster_path)
