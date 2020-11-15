@@ -2,7 +2,7 @@ package com.movie.app.ui.mainscreen
 
 
 import androidx.lifecycle.viewModelScope
-import com.movie.app.base.BaseViewModel
+import com.movie.app.base.utils.BaseViewModel
 import com.movie.app.base.Event
 import com.movie.app.data.MovieRepository
 import com.movie.app.ui.infoscreen.InfoScreen

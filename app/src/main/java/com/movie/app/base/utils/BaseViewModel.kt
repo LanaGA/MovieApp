@@ -1,7 +1,8 @@
-package com.movie.app.base
+package com.movie.app.base.utils
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.movie.app.base.Event
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
 

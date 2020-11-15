@@ -10,10 +10,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
 import com.movie.app.R
-import com.movie.app.base.formatGenres
-import com.movie.app.base.formatVoteCount
-import com.movie.app.base.formatYear
-import com.movie.app.base.round
+import com.movie.app.base.utils.formatGenres
+import com.movie.app.base.utils.formatVoteCount
+import com.movie.app.base.utils.formatYear
+import com.movie.app.base.utils.round
 import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.ui.mainscreen.UiEvent
 import com.movie.app.ui.mainscreen.model.MovieModel

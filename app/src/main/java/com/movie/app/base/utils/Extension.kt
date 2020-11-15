@@ -1,10 +1,9 @@
-package com.movie.app.base
+package com.movie.app.base.utils
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
 import com.movie.app.ui.mainscreen.model.GenreModel
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
