@@ -23,3 +23,11 @@ fun MovieRemoteModel.mapToUiModel(): MovieModel {
 fun GenreRemoteModel.mapToUiModel(): GenreModel{
     return GenreModel(name = name)
 }
+
+fun MovieModel.mapToMediaObject(): MediaObject{
+    return MediaObject(
+        title = title,
+        media_url = video,
+        thumbnail = poster_path
+    )
+}
