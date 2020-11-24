@@ -45,11 +45,15 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
+                when (tabLayout.selectedTabPosition) {
+                    0 -> display(GONE)
+                    1 -> display(VISIBLE)
+                }
             }
         })
 
-//        tabLayout.selectTab(tabLayout.getTabAt(0))
-        display(GONE)
+        tabLayout.selectTab(tabLayout.getTabAt(0))
+       // display(GONE)
         playButton.setOnClickListener {
             if (movie != null) {
                 viewModel.processUiEvent(UiEvent.OpenMoviePlayer(movie))
@@ -79,6 +83,7 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
             Chip(genreChip.context).apply {
                 text = it
                 genreChip.addView(this)
+                setChipBackgroundColorResource(R.color.colorPrimary)
                 isClickable = false
             }
         }

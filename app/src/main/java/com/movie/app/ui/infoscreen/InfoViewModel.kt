@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import ru.terrakok.cicerone.Router
 import java.io.IOException
 
-class InfoViewModel(private val moviesRepository: MovieRepository, private val router: Router) : BaseViewModel<ViewState>() {
+class InfoViewModel(private val router: Router) : BaseViewModel<ViewState>() {
     override fun initialViewState(): ViewState = ViewState(
         status = STATUS.LOAD,
         movieList = listOf(),
@@ -24,9 +24,6 @@ class InfoViewModel(private val moviesRepository: MovieRepository, private val r
         when (event) {
             is UiEvent.OpenMoviePlayer -> {
                 router.navigateTo(PlayerScreen(event.movieModel))
-            }
-            is DataEvent.OnSuccessMovieRequest -> {
-                return ViewState(STATUS.CONTENT, listOf(), event.movie)
             }
             is DataEvent.OnError -> {
                 return ViewState(status = STATUS.ERROR, movieList = listOf(), movie = null)

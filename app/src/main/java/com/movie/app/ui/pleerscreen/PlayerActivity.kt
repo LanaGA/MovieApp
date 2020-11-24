@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
@@ -32,7 +33,7 @@ class PlayerActivity : AppCompatActivity() {
 
         val arguments = intent.extras
         arguments!!
-        url = arguments.getString(URL_KEY)
+        url = arguments.getString(URL_KEY)!!
         setContentView(R.layout.fragment_player)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -40,10 +41,8 @@ class PlayerActivity : AppCompatActivity() {
         )
 
         val video = Uri.parse(url)
-
         val loadControl = DefaultLoadControl()
-        val bandwidthMeter = DefaultBandwidthMeter()
-        val trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
+        val trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory())
         exoPlayer = ExoPlayerFactory.newSimpleInstance(
             this,
             trackSelector,
@@ -51,10 +50,9 @@ class PlayerActivity : AppCompatActivity() {
         )
 
         val dataFactory = DefaultHttpDataSourceFactory("MovieApp")
-        val extractorFactory = DefaultExtractorsFactory()
         val mediaSource = ExtractorMediaSource
             .Factory(dataFactory)
-            .createMediaSource(Uri.parse(url))
+            .createMediaSource(video)
         player_view.player = exoPlayer
         player_view.keepScreenOn = true
         exoPlayer.prepare(mediaSource)

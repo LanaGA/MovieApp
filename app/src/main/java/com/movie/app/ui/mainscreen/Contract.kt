@@ -19,7 +19,7 @@ sealed class DataEvent : Event {
     data class OnSuccessAllMovieRequest(val movieList: List<MovieModel>) : DataEvent()
     data class OnSuccessMovieRequest(val movie: MovieModel) : DataEvent()
 
-    data class OnError(val error: Throwable) : DataEvent()
+    object OnError : DataEvent()
 }
 
 enum class STATUS {
