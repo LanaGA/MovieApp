@@ -1,25 +1,24 @@
 package com.movie.app.ui.mainscreen
 
 import com.movie.app.base.Event
-import com.movie.app.ui.mainscreen.model.MovieModel
+import com.movie.app.data.remote.model.MovieRemoteModel
 
 data class ViewState(
     val status: STATUS,
-    val movieList: List<MovieModel>,
-    val movie: MovieModel?
+    val movieList: List<MovieRemoteModel>,
+    val movie: MovieRemoteModel?
 )
 
 sealed class UiEvent : Event {
     object LoadMovies : UiEvent()
-    data class OpenMovieInfo(val movieModel: MovieModel) : UiEvent()
-    data class OpenMoviePlayer(val movieModel: MovieModel) : UiEvent()
+    data class OpenMovieInfo(val movieModel: MovieRemoteModel) : UiEvent()
+    data class OpenMoviePlayer(val movieModel: MovieRemoteModel) : UiEvent()
 }
 
 sealed class DataEvent : Event {
-    data class OnSuccessAllMovieRequest(val movieList: List<MovieModel>) : DataEvent()
-    data class OnSuccessMovieRequest(val movie: MovieModel) : DataEvent()
+    data class OnSuccessAllMovieRequest(val movieList: List<MovieRemoteModel>) : DataEvent()
 
-    data class OnError(val error: Throwable) : DataEvent()
+    object OnError : DataEvent()
 }
 
 enum class STATUS {

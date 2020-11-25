@@ -1,11 +1,11 @@
 package com.movie.app.di
 
 import android.util.Log
-import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.movie.app.base.BASE_URL
 import com.movie.app.data.MovieRepository
 import com.movie.app.data.MovieRepositoryImpl
 import com.movie.app.data.remote.MovieApi
+import com.movie.app.data.remote.MovieInteractor
 import com.movie.app.data.remote.model.MovieRemoteSource
 import com.movie.app.ui.infoscreen.InfoViewModel
 import com.movie.app.ui.mainscreen.MovieViewModel
@@ -56,6 +56,9 @@ val appModule = module {
         MovieRepositoryImpl(get())
     }
 
+    single<MovieInteractor> {
+        MovieInteractor(get())
+    }
 
 }
 
@@ -79,6 +82,6 @@ val viewModelModule = module {
         MovieViewModel(get(), get(named(MOVIES_QUALIFIER)))
     }
     viewModel<InfoViewModel> {
-        InfoViewModel(get(), get(named(MOVIES_QUALIFIER)))
+        InfoViewModel(get(named(MOVIES_QUALIFIER)))
     }
 }

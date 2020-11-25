@@ -15,9 +15,9 @@ import com.movie.app.base.formatGenres
 import com.movie.app.base.formatVoteCount
 import com.movie.app.base.formatYear
 import com.movie.app.base.round
+import com.movie.app.data.remote.model.MovieRemoteModel
 import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.ui.mainscreen.UiEvent
-import com.movie.app.ui.mainscreen.model.MovieModel
 import kotlinx.android.synthetic.main.fragment_detail_movie.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,9 +25,8 @@ import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Router
 
 
-class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_detail_movie) {
+class InfoFragment(private val movie: MovieRemoteModel?) : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
-    private val router: Router by inject(named(MOVIES_QUALIFIER))
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,11 +44,15 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
+                when (tabLayout.selectedTabPosition) {
+                    0 -> display(GONE)
+                    1 -> display(VISIBLE)
+                }
             }
         })
 
-//        tabLayout.selectTab(tabLayout.getTabAt(0))
-        display(GONE)
+        tabLayout.selectTab(tabLayout.getTabAt(0))
+       // display(GONE)
         playButton.setOnClickListener {
             if (movie != null) {
                 viewModel.processUiEvent(UiEvent.OpenMoviePlayer(movie))
@@ -74,16 +77,17 @@ class InfoFragment(private val movie: MovieModel?) : Fragment(R.layout.fragment_
 
         originTitleTextView.text = movie.original_title
         originLanguageTextView.text = movie.original_language
-        yearTextView.text = movie.release_date.let { formatYear(it) }
+        yearTextView.text = formatYear(movie.release_date)
         formatGenres(movie.genres).forEach {
             Chip(genreChip.context).apply {
                 text = it
                 genreChip.addView(this)
+                setChipBackgroundColorResource(R.color.colorPrimary)
                 isClickable = false
             }
         }
         scoreTextView.text = movie.vote_average.round(1).toString()
-        voteTotalTextView.text = movie.vote_count.let { formatVoteCount(it) }
+        voteTotalTextView.text = formatVoteCount(movie.vote_count)
 
     }
 
