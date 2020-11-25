@@ -1,13 +1,11 @@
 package com.movie.app.data
 
 import com.movie.app.data.remote.MovieApi
-import com.movie.app.ui.mainscreen.model.MovieModel
-import com.movie.app.ui.mainscreen.model.mapToUiModel
+import com.movie.app.data.remote.model.MovieRemoteModel
+import com.movie.app.data.remote.model.MovieRemoteSource
 
-class MovieRepositoryImpl(private val moviesApi: MovieApi) : MovieRepository {
-    override suspend fun getMoviesInfo(): List<MovieModel> {
-        return moviesApi.getMoviesInfo().movies.map {
-            it.mapToUiModel()
-        }
-    }
+class MovieRepositoryImpl(private val remoteSource: MovieRemoteSource) : MovieRepository {
+    override suspend fun getMoviesInfo(): List<MovieRemoteModel> =
+        remoteSource.getMoviesResponse().movies
+
 }

@@ -7,11 +7,10 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import com.movie.app.R
 import com.movie.app.base.Item
 import com.movie.app.base.formatYear
-import com.movie.app.ui.mainscreen.model.MovieModel
-import kotlinx.android.synthetic.main.item_movie.view.*
+import com.movie.app.data.remote.model.MovieRemoteModel
 
-fun openMovieAdapterDelegate(onClick: (MovieModel) -> Unit): AdapterDelegate<List<Item>> =
-    adapterDelegateLayoutContainer<MovieModel, Item>(
+fun openMovieAdapterDelegate(onClick: (MovieRemoteModel) -> Unit): AdapterDelegate<List<Item>> =
+    adapterDelegateLayoutContainer<MovieRemoteModel, Item>(
         R.layout.item_movie
     ) {
         containerView.setOnClickListener { onClick(item) }

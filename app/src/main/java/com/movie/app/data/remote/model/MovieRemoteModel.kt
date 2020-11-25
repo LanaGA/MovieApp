@@ -1,6 +1,7 @@
 package com.movie.app.data.remote.model
 
 import com.google.gson.annotations.SerializedName
+import com.movie.app.base.Item
 import java.util.*
 
 data class MovieRemoteModel(
@@ -30,11 +31,4 @@ data class MovieRemoteModel(
     val vote_average: Double,
     @SerializedName("vote_count")
     val vote_count: Int
-)
-
-
-
-data class MovieListRemoteModel(
-    @SerializedName("results")
-    val results: List<MovieRemoteModel>
-)
+) : Item

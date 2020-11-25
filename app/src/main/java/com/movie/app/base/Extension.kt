@@ -3,9 +3,7 @@ package com.movie.app.base
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
-import com.movie.app.R
-import com.movie.app.ui.mainscreen.model.GenreModel
-import java.text.SimpleDateFormat
+import com.movie.app.data.remote.model.GenreRemoteModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,7 +36,7 @@ fun formatVoteCount(vote: Int): String {
     return "(Total vote: $vote)"
 }
 
-fun formatGenres(genres: List<GenreModel>): List<String> {
+fun formatGenres(genres: List<GenreRemoteModel>): List<String> {
     val string = ArrayList<String>()
     genres.forEachIndexed { _, genreModel ->
         string.add(genreModel.name)

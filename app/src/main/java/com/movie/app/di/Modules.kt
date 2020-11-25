@@ -1,7 +1,6 @@
 package com.movie.app.di
 
 import android.util.Log
-import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.movie.app.base.BASE_URL
 import com.movie.app.data.MovieRepository
 import com.movie.app.data.MovieRepositoryImpl
