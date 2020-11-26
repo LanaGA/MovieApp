@@ -2,12 +2,18 @@ package com.movie.app
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.movie.app.base.toLeftEither
-import com.movie.app.base.toRightEither
 import com.movie.app.data.remote.MovieInteractor
 import com.movie.app.data.remote.model.MovieRemoteModel
-import com.movie.app.ui.mainscreen.*
-import com.nhaarman.mockitokotlin2.*
+import com.movie.app.extension.toLeftEither
+import com.movie.app.extension.toRightEither
+import com.movie.app.ui.mainscreen.DataEvent
+import com.movie.app.ui.mainscreen.MovieViewModel
+import com.movie.app.ui.mainscreen.STATUS
+import com.movie.app.ui.mainscreen.ViewState
+import com.nhaarman.mockitokotlin2.atLeastOnce
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
@@ -44,7 +50,7 @@ class MovieViewModelTest {
         createViewModel()
         viewModel.processDataEvent(DataEvent.OnSuccessAllMovieRequest(listOf(m)))
         val vs = captureViewState()
-        Assert.assertEquals(vs.movieList.first(), m)
+        Assert.assertEquals((vs.status as STATUS.CONTENT).movieList.first(), m)
     }
 
     @Test

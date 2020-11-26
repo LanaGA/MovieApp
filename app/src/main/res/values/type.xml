@@ -19,4 +19,9 @@
         <item name="lineHeight">20sp</item>
     </style>
 
+    <style name="TextAppearance.MovieName" parent="TextAppearance.MovieApp.Body1">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

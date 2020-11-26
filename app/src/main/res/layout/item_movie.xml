@@ -23,30 +23,25 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/shadow_item"
+            app:layout_constraintBottom_toBottomOf="@id/posterImage"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/titleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textSize="20sp"
+            android:padding="@dimen/padding"
+            android:textAppearance="@style/TextAppearance.MovieName"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/posterImage"
             tools:text="Title" />
 
-        <TextView
-            android:id="@+id/yearText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/titleText"
-            app:layout_constraintTop_toBottomOf="@+id/titleText"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="YYYY" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

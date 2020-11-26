@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -21,8 +20,6 @@ import kotlinx.android.synthetic.main.item_description.*
 import kotlinx.android.synthetic.main.item_more_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val KEY_MOVIE = "KEY_MOVIE"
-
 class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
 
@@ -36,20 +33,16 @@ class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.frag
     private fun initUi() {
         attachModel()
 
-//        main_pager.adapter = FragmentAdapter(requireActivity())
-//            .apply { items = listOf(0, 1) }
-//        showPosition(arguments?.getInt(ARG_POSITION) ?: 0)
-
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                tabAction()
+                showPosition(tabLayout.selectedTabPosition)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                tabAction()
+                showPosition(tabLayout.selectedTabPosition)
             }
         })
         tabLayout.selectTab(tabLayout.getTabAt(0))
@@ -68,13 +61,6 @@ class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.frag
             }
             is STATUS.ERROR -> {
             }
-        }
-    }
-
-    private fun tabAction() {
-        when (tabLayout.selectedTabPosition) {
-            0 -> display(false)
-            1 -> display(true)
         }
     }
 
@@ -114,19 +100,4 @@ class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.frag
         voteTotalTextView.text = res.getString(R.string.total_vote, movie.vote_count.toString())
 
     }
-
-    private fun display(isVisible: Boolean) {
-        val visible = if (isVisible) VISIBLE else GONE
-        originTitleTextView.visibility = visible
-        originTitleTextView.visibility = visible
-
-        originLanguageTextView.visibility = visible
-        yearTextView.visibility = visible
-        genreChip.visibility = visible
-        namedGenreTextView.visibility = visible
-        scoreTextView.visibility = visible
-        voteTotalTextView.visibility = visible
-    }
-
-
 }

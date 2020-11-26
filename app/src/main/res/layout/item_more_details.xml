@@ -63,17 +63,17 @@
         android:text="@string/score"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genreChip" />
+        app:layout_constraintTop_toBottomOf="@+id/namedGenreTextView" />
 
     <TextView
         android:id="@+id/voteTotalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding"
+        android:text="@string/total_vote"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        app:layout_constraintStart_toEndOf="@+id/scoreTextView"
-        app:layout_constraintTop_toBottomOf="@+id/genreChip"
-        android:text="@string/total_vote" />
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTextView" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -81,6 +81,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="10"
+        android:padding="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="@+id/voteTotalTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

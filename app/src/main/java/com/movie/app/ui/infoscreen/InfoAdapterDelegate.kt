@@ -6,7 +6,6 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import com.movie.app.R
 import com.movie.app.base.Item
-import com.movie.app.extension.formatYear
 import com.movie.app.data.remote.model.MovieRemoteModel
 
 fun openMovieAdapterDelegate(onClick: (MovieRemoteModel) -> Unit): AdapterDelegate<List<Item>> =
@@ -17,7 +16,6 @@ fun openMovieAdapterDelegate(onClick: (MovieRemoteModel) -> Unit): AdapterDelega
 
         bind {
             findViewById<TextView>(R.id.titleText).text = item.title
-            findViewById<TextView>(R.id.yearText).text = formatYear(item.release_date)
             Glide.with(containerView)
                 .load(item.poster_path)
                 .into(findViewById(R.id.posterImage))

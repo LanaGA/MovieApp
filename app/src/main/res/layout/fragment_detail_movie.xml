@@ -28,6 +28,11 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 tools:src="@tools:sample/avatars" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/shadow_item"
+                android:layout_gravity="bottom" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/titleToolbar"
@@ -36,7 +41,6 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="Title"
-
                 app:titleTextAppearance="@style/TextAppearance.MovieApp.Body1" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -55,8 +59,20 @@
                 android:id="@+id/tabLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More Details" />
+            </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/main_pager"
