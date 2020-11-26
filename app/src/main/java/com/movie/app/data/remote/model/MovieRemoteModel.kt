@@ -1,9 +1,12 @@
 package com.movie.app.data.remote.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.movie.app.base.Item
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class MovieRemoteModel(
     @SerializedName("adult")
     val isAdult: Boolean,
@@ -31,4 +34,4 @@ data class MovieRemoteModel(
     val vote_average: Double,
     @SerializedName("vote_count")
     val vote_count: Int
-) : Item
+) : Item, Parcelable

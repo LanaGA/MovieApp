@@ -1,4 +1,4 @@
-package com.movie.app.base
+package com.movie.app.extension
 
 inline fun <reified T> attempt(func: () -> T): Either<Throwable, T> = try {
     Either.Right(func.invoke())

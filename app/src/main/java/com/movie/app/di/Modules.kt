@@ -6,7 +6,7 @@ import com.movie.app.data.MovieRepository
 import com.movie.app.data.MovieRepositoryImpl
 import com.movie.app.data.remote.MovieApi
 import com.movie.app.data.remote.MovieInteractor
-import com.movie.app.data.remote.model.MovieRemoteSource
+import com.movie.app.data.remote.MovieRemoteSource
 import com.movie.app.ui.infoscreen.InfoViewModel
 import com.movie.app.ui.mainscreen.MovieViewModel
 import okhttp3.OkHttpClient

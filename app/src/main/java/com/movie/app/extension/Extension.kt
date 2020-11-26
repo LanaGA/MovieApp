@@ -1,4 +1,4 @@
-package com.movie.app.base
+package com.movie.app.extension
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -30,10 +30,6 @@ fun Double.round(decimals: Int): Double = "%.${decimals}f".format(this).toDouble
 fun formatYear(date: Date): String {
     val calendar = Calendar.getInstance().apply { time = date }
     return calendar.get(Calendar.YEAR).toString()
-}
-
-fun formatVoteCount(vote: Int): String {
-    return "(Total vote: $vote)"
 }
 
 fun formatGenres(genres: List<GenreRemoteModel>): List<String> {

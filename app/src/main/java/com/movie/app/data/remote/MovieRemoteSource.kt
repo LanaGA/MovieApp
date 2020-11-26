@@ -1,4 +1,4 @@
-package com.movie.app.data.remote.model
+package com.movie.app.data.remote
 
 import com.movie.app.data.remote.MovieApi
 

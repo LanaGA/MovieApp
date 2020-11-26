@@ -1,8 +1,8 @@
 package com.movie.app
 
-import com.movie.app.base.formatGenres
-import com.movie.app.base.formatYear
 import com.movie.app.data.remote.model.GenreRemoteModel
+import com.movie.app.extension.formatGenres
+import com.movie.app.extension.formatYear
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Test

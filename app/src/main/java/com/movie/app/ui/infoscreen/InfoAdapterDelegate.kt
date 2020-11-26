@@ -6,7 +6,7 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import com.movie.app.R
 import com.movie.app.base.Item
-import com.movie.app.base.formatYear
+import com.movie.app.extension.formatYear
 import com.movie.app.data.remote.model.MovieRemoteModel
 
 fun openMovieAdapterDelegate(onClick: (MovieRemoteModel) -> Unit): AdapterDelegate<List<Item>> =

@@ -49,148 +49,39 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/main_pager"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+            <include
+                android:id="@+id/more_details"
+                layout="@layout/item_more_details"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/main_pager" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="More Details" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:text="Overview of the movie"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/voteTotalTextView" />
-
-            <TextView
-                android:id="@+id/namedOriginTitle"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout"
-                tools:text="Origin Title: " />
-
-            <TextView
-                android:id="@+id/originTitleTextView"
+            <include
+                android:id="@+id/more_description"
+                layout="@layout/item_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toEndOf="@+id/namedOriginTitle"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout"
-                tools:text="Origin Title" />
-
-            <TextView
-                android:id="@+id/namedOriginLanguage"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/originTitleTextView"
-                android:text= "@string/originLanguage" />
-
-            <TextView
-                android:id="@+id/originLanguageTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toEndOf="@+id/namedOriginLanguage"
-                app:layout_constraintTop_toBottomOf="@+id/originTitleTextView"
-                tools:text="Origin Language" />
-
-            <TextView
-                android:id="@+id/namedYearTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/originLanguageTextView"
-                android:text="@string/releaseYear" />
-
-            <TextView
-                android:id="@+id/yearTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toEndOf="@+id/namedYearTextView"
-                app:layout_constraintTop_toBottomOf="@+id/originLanguageTextView"
-                tools:text="2014" />
-
-            <TextView
-                android:id="@+id/namedGenreTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/yearTextView"
-                android:text="@string/genres" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/genreChip"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/namedGenreTextView"
-                tools:text="Drama, Music" />
-
-            <TextView
-                android:id="@+id/namedScoreTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genreChip"
-                android:text="@string/score" />
-
-            <TextView
-                android:id="@+id/scoreTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toEndOf="@+id/namedScoreTextView"
-                app:layout_constraintTop_toBottomOf="@+id/genreChip"
-                tools:text="8.5" />
-
-            <TextView
-                android:id="@+id/voteTotalTextView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintStart_toEndOf="@+id/scoreTextView"
-                app:layout_constraintTop_toBottomOf="@+id/genreChip"
-                tools:text="()" />
+                app:layout_constraintTop_toBottomOf="@id/more_details" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
