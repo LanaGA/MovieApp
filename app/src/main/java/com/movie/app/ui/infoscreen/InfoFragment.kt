@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -27,8 +26,6 @@ import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Router
 import kotlin.math.abs
 
-private const val KEY_MOVIE = "KEY_MOVIE"
-
 class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
     private val router: Router by inject(named(MOVIES_QUALIFIER))
@@ -42,9 +39,7 @@ class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
 
     companion object {
         fun newInstance(movie: MovieRemoteModel) =
-            InfoFragment().apply {
-                arguments = bundleOf(KEY_MOVIE to movie)
-            }
+            InfoFragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
