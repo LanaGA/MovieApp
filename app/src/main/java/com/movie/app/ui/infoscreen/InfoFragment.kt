@@ -82,7 +82,7 @@ class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
         }
 
         playButtonDown.setOnClickListener {
-            if (playButtonDown.alpha == 0.0f) {
+            if (playButtonDown.alpha == 1.0f) {
                 viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
             }
         }

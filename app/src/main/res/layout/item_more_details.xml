@@ -63,7 +63,7 @@
         android:text="@string/score"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namedGenreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/genreChip" />
 
     <TextView
         android:id="@+id/voteTotalTextView"
