@@ -1,7 +1,7 @@
 package com.movie.app
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.ui.HolderFragment
 import org.koin.android.ext.android.inject
@@ -13,12 +13,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(android.R.id.content, HolderFragment.newInstance())
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(android.R.id.content, HolderFragment.newInstance())
+                .commit()
+        }
     }
+
     override fun onBackPressed() {
         router.exit()
     }

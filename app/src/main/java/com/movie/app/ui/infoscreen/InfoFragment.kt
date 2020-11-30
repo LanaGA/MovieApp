@@ -8,7 +8,6 @@ import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -18,13 +17,11 @@ import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.extension.formatGenres
 import com.movie.app.extension.formatYear
 import kotlinx.android.synthetic.main.fragment_detail_movie.*
-import kotlinx.android.synthetic.main.item_description.*
 import kotlinx.android.synthetic.main.item_more_details.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import ru.terrakok.cicerone.Router
-import kotlin.math.abs
 
 class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
@@ -38,7 +35,7 @@ class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
     }
 
     companion object {
-        fun newInstance(movie: MovieRemoteModel) =
+        fun newInstance() =
             InfoFragment()
     }
 
@@ -65,26 +62,8 @@ class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
         })
         tabLayout.selectTab(tabLayout.getTabAt(0))
 
-        buttonBack.setOnClickListener {
-            router.exit()
-        }
-
-        appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val percent = (abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange)
-            playButtonUp.alpha = percent
-            playButtonDown.alpha = 1.0f - percent
-        })
-
-        playButtonUp.setOnClickListener {
-            if (playButtonUp.alpha == 1.0f) {
-                viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
-            }
-        }
-
         playButtonDown.setOnClickListener {
-            if (playButtonDown.alpha == 1.0f) {
-                viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
-            }
+            viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
         }
     }
 

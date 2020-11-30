@@ -59,7 +59,8 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
-        android:layout_height="727dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="64dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,7 +69,7 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,20 +78,13 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description" />
+                    android:text="@string/description" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="More Details" />
+                    android:text="@string/more_details" />
             </com.google.android.material.tabs.TabLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/main_pager"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
             <include
                 android:id="@+id/more_details"
@@ -99,26 +93,18 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/main_pager" />
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
-            <include
-                android:id="@+id/more_description"
-                layout="@layout/item_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+            <TextView
+                android:id="@+id/descriptionTextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/more_details" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/playButtonUp"
-                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/more_details"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:fabSize="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-                app:srcCompat="@android:drawable/ic_media_play"
-                app:useCompatPadding="true" />
+                android:padding="@dimen/padding"
+                tools:text="Overview of the movie"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

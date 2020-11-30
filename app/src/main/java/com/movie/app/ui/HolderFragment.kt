@@ -25,7 +25,8 @@ class HolderFragment : Fragment(R.layout.activity_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        router.navigateTo(MovieScreen())
+        if(savedInstanceState == null)
+            router.newRootScreen(MovieScreen())
     }
 
     override fun onResume() {

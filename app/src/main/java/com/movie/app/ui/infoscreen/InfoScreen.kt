@@ -7,7 +7,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class InfoScreen(private val movieModel: MovieRemoteModel) : SupportAppScreen() {
     override fun getFragment(): Fragment? {
-        return InfoFragment.newInstance(movieModel).apply {
+        return InfoFragment.newInstance().apply {
             arguments = bundleOf(KEY_MOVIE to movieModel)
         }
     }
