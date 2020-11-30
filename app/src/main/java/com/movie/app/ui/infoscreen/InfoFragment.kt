@@ -62,6 +62,9 @@ class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
         })
         tabLayout.selectTab(tabLayout.getTabAt(0))
 
+        buttonBack.setOnClickListener {
+            router.exit()
+        }
         playButtonDown.setOnClickListener {
             viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
         }
