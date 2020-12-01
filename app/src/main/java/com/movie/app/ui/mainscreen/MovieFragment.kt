@@ -9,7 +9,6 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.movie.app.R
 import com.movie.app.extension.setAdapterAndCleanupOnDetachFromWindow
 import com.movie.app.extension.setData
-import com.movie.app.ui.infoscreen.openMovieAdapterDelegate
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.item_error.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

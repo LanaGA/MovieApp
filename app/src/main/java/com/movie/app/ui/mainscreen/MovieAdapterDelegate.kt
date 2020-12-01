@@ -1,4 +1,4 @@
-package com.movie.app.ui.infoscreen
+package com.movie.app.ui.mainscreen
 
 import android.widget.TextView
 import com.bumptech.glide.Glide
