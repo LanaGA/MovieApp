@@ -25,8 +25,6 @@ fun RecyclerView.setAdapterAndCleanupOnDetachFromWindow(mAdapter: RecyclerView.A
     })
 }
 
-fun Double.round(decimals: Int): Double = "%.${decimals}f".format(this).toDouble()
-
 fun formatYear(date: Date): String {
     val calendar = Calendar.getInstance().apply { time = date }
     return calendar.get(Calendar.YEAR).toString()

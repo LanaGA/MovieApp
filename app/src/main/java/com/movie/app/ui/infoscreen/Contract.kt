@@ -3,6 +3,8 @@ package com.movie.app.ui.infoscreen
 import com.movie.app.base.Event
 import com.movie.app.data.remote.model.MovieRemoteModel
 
+const val KEY_MOVIE = "KEY_MOVIE"
+
 data class ViewState(
     val status: STATUS
 )

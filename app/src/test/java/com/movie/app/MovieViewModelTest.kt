@@ -54,7 +54,7 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun `test request movies failure`() {
+    fun `test load movies failure`() {
         createViewModel()
         mockMovieRequestError()
     }

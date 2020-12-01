@@ -13,25 +13,40 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.movie.app.R
 import com.movie.app.data.remote.model.MovieRemoteModel
+import com.movie.app.di.MOVIES_QUALIFIER
 import com.movie.app.extension.formatGenres
 import com.movie.app.extension.formatYear
 import kotlinx.android.synthetic.main.fragment_detail_movie.*
-import kotlinx.android.synthetic.main.item_description.*
 import kotlinx.android.synthetic.main.item_more_details.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.qualifier.named
+import ru.terrakok.cicerone.Router
 
-class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.fragment_detail_movie) {
+class InfoFragment : Fragment(R.layout.fragment_detail_movie) {
     private val viewModel: InfoViewModel by viewModel()
+    private val router: Router by inject(named(MOVIES_QUALIFIER))
+    private val movie by lazy {
+        requireNotNull(
+            requireArguments().getParcelable<MovieRemoteModel>(
+                KEY_MOVIE
+            )
+        )
+    }
 
+    companion object {
+        fun newInstance() =
+            InfoFragment()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUi()
+        initUi(movie)
         viewModel.viewState.observe(viewLifecycleOwner, Observer(::render))
     }
 
-    private fun initUi() {
-        attachModel()
+    private fun initUi(movie: MovieRemoteModel) {
+        attachModel(movie)
 
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -47,7 +62,10 @@ class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.frag
         })
         tabLayout.selectTab(tabLayout.getTabAt(0))
 
-        playButton.setOnClickListener {
+        buttonBack.setOnClickListener {
+            router.exit()
+        }
+        playButtonDown.setOnClickListener {
             viewModel.processUiEvent(UiEvent.OnOpenMoviePlayer(movie))
         }
     }
@@ -75,7 +93,7 @@ class InfoFragment(private val movie: MovieRemoteModel) : Fragment(R.layout.frag
         more_details.visibility = if (isVisible) VISIBLE else GONE
     }
 
-    private fun attachModel() {
+    private fun attachModel(movie: MovieRemoteModel) {
         val res: Resources = resources
         Glide.with(requireContext())
             .load(movie.poster_path)
